@@ -48,7 +48,11 @@ Documentation :   https://github.com/Rob--W/cors-anywhere/#documentation --> */
 			var loc = json.name;
 			var icon = "<img src = 'http://openweathermap.org/img/w/" + json.weather[0].icon + ".png'>";
 	
-	
+	//display values on page
+			$("#temp").html(temp);
+			$("#description").html(weather);
+			$("#loc").html(loc);
+      $("#icon").html(icon);//
 	
 	
 	
