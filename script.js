@@ -40,7 +40,13 @@ Demo          :   https://robwu.nl/cors-anywhere.html
 Source code   :   https://github.com/Rob--W/cors-anywhere/
 Documentation :   https://github.com/Rob--W/cors-anywhere/#documentation --> */
 	
-	
+	function(json) {
+			//gets weather information from open weather map
+			var imageUrl; //initialize and set vars with values from open weather json
+			var temp = json.main.temp;
+			var weather = json.weather[0].main;
+			var loc = json.name;
+			var icon = "<img src = 'http://openweathermap.org/img/w/" + json.weather[0].icon + ".png'>";
 	
 	
 	
