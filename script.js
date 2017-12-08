@@ -63,6 +63,16 @@ Documentation :   https://github.com/Rob--W/cors-anywhere/#documentation --> */
 							that.text(a);
 							temp = json.main.temp;
 							$("#temp").html(temp);
-	
+	isClicked = false;
+						} else { //sets value to C and displays on page 
+							that.text(b);
+							isClicked = true;
+							temp = convertToCelsius(temp);
+							$("#temp").html(temp);
+						}
+					});
+					return this;
+				}
+			});
 	
 	
