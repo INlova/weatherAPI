@@ -58,7 +58,11 @@ Documentation :   https://github.com/Rob--W/cors-anywhere/#documentation --> */
 				toggleText: function(a, b) {
 					var isClicked = false;
 					var that = this;
-	
+	this.click(function() { //push to F and display
+						if (isClicked) {a
+							that.text(a);
+							temp = json.main.temp;
+							$("#temp").html(temp);
 	
 	
 	
