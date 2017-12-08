@@ -47,15 +47,17 @@ Documentation :   https://github.com/Rob--W/cors-anywhere/#documentation --> */
 			var weather = json.weather[0].main;
 			var loc = json.name;
 			var icon = "<img src = 'http://openweathermap.org/img/w/" + json.weather[0].icon + ".png'>";
-	
+	s
 	//display values on page
 			$("#temp").html(temp);
 			$("#description").html(weather);
 			$("#loc").html(loc);
       $("#icon").html(icon);//
 	
-	
-	
+		jQuery.fn.extend({ // FC togg function
+				toggleText: function(a, b) {
+					var isClicked = false;
+					var that = this;
 	
 	
 	
