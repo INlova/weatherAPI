@@ -40,8 +40,8 @@ $(document).ready(function() {
 				}
 			});
 			$('#tempScale').toggleText(String.fromCharCode(176) + 'F', String.fromCharCode(176) + 'C');
-			//sets background image depending on temp and conditions
-			if (temp < 40) { //cold, snow
+			//setting background image depending on temp and conditions
+			if (temp < 40) { //cold, snow map
 				imageUrl = "https://static2.cs-bg.net/maps/images/screenshots/maps16/gg/cs-2457-gg_iceworld_x.jpg";
 				setBackground(imageUrl);
 			} else if (weather === "Rain") { // rain map
@@ -62,7 +62,7 @@ $(document).ready(function() {
 }); 
 });
 
-function setBackground(imageUrl) { //sets background image
+function setBackground(imageUrl) { //pushes bg image to background
   $('.bk').css('background-image','url("'+imageUrl+'")');
 }
 
