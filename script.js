@@ -44,13 +44,13 @@ $(document).ready(function() {
 			if (temp < 40) { //cold, snow
 				imageUrl = "https://static2.cs-bg.net/maps/images/screenshots/maps16/gg/cs-2457-gg_iceworld_x.jpg";
 				setBackground(imageUrl);
-			} else if (weather === "Rain") { // rain
+			} else if (weather === "Rain") { // rain map
 				imageUrl = "https://static2.cs-bg.net/maps/images/screenshots/maps16/de/cs-249-de_aztec.jpg";
 				setBackground(imageUrl);
-			} else if (temp > 75 && temp < 85) { //tropical beach
+			} else if (temp > 75 && temp < 85) { // trop map
 				imageUrl = "https://static2.cs-bg.net/maps/images/screenshots/maps16/de/cs-60-de_dust2_long-2.jpg";
 				setBackground(imageUrl);
-			} else if (temp >= 90) { // desert
+			} else if (temp >= 90) { // desert map
 				imageUrl = "https://static2.cs-bg.net/maps/images/screenshots/maps16/de/cs-60-de_dust2_long-2.jpg";
 				setBackground(imageUrl);
 			} else { // default - pleasant summer lake
