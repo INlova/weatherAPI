@@ -6,7 +6,6 @@ using log and lat call local weather api
 
 basic math in a clickable form (?hover) to swap afrom C to F and vversa
 
-geolocation function to unite user and go on beer quests
 
 ***update background images - further segmentation required.
 
