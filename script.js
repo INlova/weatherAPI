@@ -53,7 +53,7 @@ $(document).ready(function() {
 			} else if (temp >= 90) { // desert map
 				imageUrl = "https://static2.cs-bg.net/maps/images/screenshots/maps16/de/cs-60-de_dust2_long-2.jpg";
 				setBackground(imageUrl);
-			} else { // default - pleasant summer lake
+			} else { // default - placeholder map
 				imageUrl = "https://img-aws.ehowcdn.com/877x500p/photos.demandstudios.com/getty/article/88/122/87761766.jpg"
 				setBackground(imageUrl);
 		  }
