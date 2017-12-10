@@ -1,15 +1,79 @@
+/*global $*/
+/*global jquery*/
 $(document).ready(function() {
-	navigator.geolocation.getCurrentPosition(function(position)
-	var lat = position.coords.latitude;
-	var lon = position.coords.longitude;
-	
-	
-	
-$.getJSON("https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=8421ccdba1ed7d7315bbcdde0f687adf", function(json) {
+	navigator.geolocation.getCurrentPosition(function(position) { // location call  
+		var lat = position.coords.latitude;
+		var lon = position.coords.longitude;
+		$.getJSON("https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=8421ccdba1ed7d7315bbcdde0f687adf", function(json) {
 			//gets weather information from open weather map
-			var imageUrl; //initialize and set vars with values from open weather json	
+			var imageUrl; //initialize and set vars with values from open weather json
+			var temp = json.main.temp;
+			var weather = json.weather[0].main;
+			var loc = json.name;
+			var icon = "<img src = 'https://openweathermap.org/img/w/" + json.weather[0].icon + ".png'>";
+      
+			//display values on page
+			$("#temp").html(temp);
+			$("#description").html(weather);
+			$("#loc").html(loc);
+      $("#icon").html(icon);//add icon
+
+			jQuery.fn.extend({ // FC togg function
+				toggleText: function(a, b) {
+					var isClicked = false;
+					var that = this;
+					this.click(function() { //push to F and display
+						if (isClicked) {a
+							that.text(a);
+							temp = json.main.temp;
+							$("#temp").html(temp);
+						
+							isClicked = false;
+						} else { //sets value to C and displays on page 
+							that.text(b);
+							isClicked = true;
+							temp = convertToCelsius(temp);
+							$("#temp").html(temp);
+						}
+					});
+					return this;
+				}
+			});
+			$('#tempScale').toggleText(String.fromCharCode(176) + 'F', String.fromCharCode(176) + 'C');
+			//sets background image depending on temp and conditions
+			if (temp < 40) { //cold, snow
+				imageUrl = "https://static2.cs-bg.net/maps/images/screenshots/maps16/gg/cs-2457-gg_iceworld_x.jpg";
+				setBackground(imageUrl);
+			} else if (weather === "Rain") { // rain
+				imageUrl = "https://static2.cs-bg.net/maps/images/screenshots/maps16/de/cs-249-de_aztec.jpg";
+				setBackground(imageUrl);
+			} else if (temp > 75 && temp < 85) { //tropical beach
+				imageUrl = "https://static2.cs-bg.net/maps/images/screenshots/maps16/de/cs-60-de_dust2_long-2.jpg";
+				setBackground(imageUrl);
+			} else if (temp >= 90) { // desert
+				imageUrl = "https://static2.cs-bg.net/maps/images/screenshots/maps16/de/cs-60-de_dust2_long-2.jpg";
+				setBackground(imageUrl);
+			} else { // default - pleasant summer lake
+				imageUrl = "https://img-aws.ehowcdn.com/877x500p/photos.demandstudios.com/getty/article/88/122/87761766.jpg"
+				setBackground(imageUrl);
+		  }
+
+    });    
+}); 
+});
+
+function setBackground(imageUrl) { //sets background image
+  $('.bk').css('background-image','url("'+imageUrl+'")');
+}
+
+function convertToCelsius(temp) { //converts F temp to C
+   return (Math.round( ((temp-32)*.5556) * 10 ) / 10);
+}
+// icon  req added inline
+
+
 	
-	//This API enables cross-origin requests to anywhere.
+	//This API enables cross-origin requests to anywhere. IMPORTANT!
 
 /* Usage:
 
@@ -39,40 +103,3 @@ it's recommended to not manually set these headers in your code.
 Demo          :   https://robwu.nl/cors-anywhere.html
 Source code   :   https://github.com/Rob--W/cors-anywhere/
 Documentation :   https://github.com/Rob--W/cors-anywhere/#documentation --> */
-	
-	function(json) {
-			//gets weather information from open weather map
-			var imageUrl; //initialize and set vars with values from open weather json
-			var temp = json.main.temp;
-			var weather = json.weather[0].main;
-			var loc = json.name;
-			var icon = "<img src = 'http://openweathermap.org/img/w/" + json.weather[0].icon + ".png'>";
-	s
-	//display values on page
-			$("#temp").html(temp);
-			$("#description").html(weather);
-			$("#loc").html(loc);
-      $("#icon").html(icon);//
-	
-		jQuery.fn.extend({ // FC togg function
-				toggleText: function(a, b) {
-					var isClicked = false;
-					var that = this;
-	this.click(function() { //push to F and display
-						if (isClicked) {a
-							that.text(a);
-							temp = json.main.temp;
-							$("#temp").html(temp);
-	isClicked = false;
-						} else { //sets value to C and displays on page 
-							that.text(b);
-							isClicked = true;
-							temp = convertToCelsius(temp);
-							$("#temp").html(temp);
-						}
-					});
-					return this;
-				}
-			});
-	
-	
